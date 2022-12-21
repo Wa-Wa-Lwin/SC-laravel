@@ -38,7 +38,6 @@ class PostController extends Controller
             'title'=>$title,
             'content'=>$content,
             'category_id'=>$categoryId
-
         ]);
 
         return redirect('/posts')->with('msg','Created Successfully.'); 

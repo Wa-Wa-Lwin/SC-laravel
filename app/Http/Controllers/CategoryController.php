@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+// use App\Models\Category;
+// use App\Models\Post; // it can also write like this individually. 
+//use App\Models\{Category,Post};
+
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -16,8 +21,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('category.create');
-        
+        return view('category.create');        
     }
 
 
@@ -68,7 +72,9 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        Category::find($id)->delete(); 
+        $category = Category::find($id); 
+        Post::where('category_id','=', $category->id)->delete(); 
+        $category->delete(); 
         return back()->with('msg','Deleted Successfully.');
         
     }

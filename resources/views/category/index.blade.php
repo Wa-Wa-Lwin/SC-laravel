@@ -27,6 +27,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Post</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -35,6 +36,16 @@
                 <tr>
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
+                
+                {{-- <td>{{ $category->posts }}</td> --}}
+                <td>
+                    @foreach ($category->posts as $post)
+                        <div>
+                            # {{ $post->title }}
+                        </div>
+                    @endforeach
+                </td>
+
                 <td>
                     <form action="{{ url('categories/'.$category->id) }}" method="post">
                         @csrf

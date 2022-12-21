@@ -34,6 +34,7 @@
                             <th>id</th>
                             <th>title</th>
                             <th>content</th>
+                            <th>category</th>
                             <th>actions</th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->content }}</td>
+                                <td>{{ $post->category->name }}</td>
                                 <td>                                    
                                     <form action="{{ url('/posts/'.$post->id) }}" method="post">
                                     @csrf 
