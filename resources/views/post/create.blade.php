@@ -46,13 +46,15 @@
 
                 <!-- Category --> 
                 <div class="mb-3">
-                    <select name="" id="" class="form-control">
+                    <select name="" id="" class="form-control @error('category_id') is invalid @enderror">
                         <option value="">Select Category</option>
                         @foreach ($categories as $category)
                         <option value="{{ $category->id }}"> {{ $category->name }} </option>
                         @endforeach
                     </select>
-
+                    @error('category_id')
+                    <span class="invalid-feedback"> {{ $message }} </span> 
+                    @enderror 
                 </div>
 
 
