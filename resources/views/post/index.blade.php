@@ -49,11 +49,22 @@
                                     <form action="{{ url('/posts/'.$post->id) }}" method="post">
                                     @csrf 
                                     @method('delete')
-                                    
-                                    <a href="{{ url('/posts/'.$post->id.'/edit') }}" class="btn btn-info">edit</a>
 
-                                    
-                                    <button class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</button>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <a href="{{ url('/posts/'.$post->id.'/edit') }}" class="btn btn-info">edit</a>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" onclick="return confirm('Are you sure to delete?')">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <a href="{{ url('/posts/' . $post->id . '/comments') }}" class="btn btn-warning m-1">View Comments <span class="badge text-bg-secondary">{{ count($post->comments) }}</span></a>
+                                            </td>
+                                        </tr>
+                                    </table>
                                     </form>                                    
                                 </td>
                             </tr>
